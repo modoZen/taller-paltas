@@ -39,12 +39,12 @@ async function fetchData() {
         // create title
         const title = document.createElement("h2");
         title.textContent = item.name;
-        title.className = 'text-lg';
+        title.className = 'text-lg font-bold text-green-700';
 
         // create price
         const price = document.createElement("div");
         price.textContent = formatPrice(item.price);
-        price.className = 'text-gray-600'
+        price.className = 'text-gray-600 font-bold'
 
         //Wrap price & title
         const priceAndTitle = document.createElement('div')
@@ -53,12 +53,13 @@ async function fetchData() {
 
         //Wrap Img and priceAndTitle
         const card = document.createElement('div')
-        card.className = "md:flex bg-white rounded-lg p-6 hover:bg-gray-300"
+        card.className = "md:flex bg-white rounded-lg p-6 hover:bg-gray-300 justify-center items-center shadow-2xl"
         card.append(image, priceAndTitle)
     
         allItems.push(card);
     });
-    app.style = "display: grid; grid-template-columns: 1fr 1fr;"
+    app.className = "grid gap-3";
+    app.style = "display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%,20rem),1fr));"
     app.append(...allItems)
 }
 
